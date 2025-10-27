@@ -389,7 +389,8 @@
         document.querySelectorAll('#img_clo').forEach(img => {
             cnt+=1;
             let t = img.nextElementSibling.nextElementSibling.firstChild;
-            img.src = "/IMAGE_FOLDER/"+type_product.value+"/"+type_product.value+cnt+mr;
+            // img.src = "/IMAGE_FOLDER/"+type_product.value+"/"+type_product.value+cnt+mr;
+            img.src = "/IMAGE_FOLDER/somi/somi1.jpg";
             img.addEventListener('click', () => {
                 let val = img.src;
                 const data = {
@@ -414,3 +415,4 @@
 </body>
 
 </html>
+
