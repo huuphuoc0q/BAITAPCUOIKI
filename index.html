@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLOUE - SHOP</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Ga+Maamli&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rowdies:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="header">
+        <div id="logo">
+            <a href="index.html">
+                <img src="logo1.png" alt="Logo" class="logo">
+            </a>
+        </div>
+        <div id="search_box">
+            <form class="d-flex" role="search">
+                <input style="border-radius: 25px ;" class="form-control me-2" type="search" placeholder="Bạn cần tìm gì? " aria-label="Search"/>
+                <button class="btn btn-outline-danger" type="submit">
+                    <i class="bi bi-search"></i>
+                </button>
+            </form>
+        </div>
+        <div id="hotline">
+            <div id="phone">
+                <i class="bi bi-telephone-fill"></i>
+
+            </div>
+            <span> HOTLINE: <span style="font-weight: bold;"> 0123456789</span></span>
+        </div>
+        <div id="account" style="cursor: pointer;">
+            <div id="login">Đăng nhập</div>
+            <div id="logout">Đăng kí</div>
+        </div>
+        <div id="giohang" style="cursor: pointer;">
+            <div id="xe">
+                <i class="bi bi-cart4" style="font-size: 1rem;"></i>
+            </div>            
+            <span id="money">1.000.000<sup>đ</sup></span>
+
+        </div>
+    </div>
+    <div id="navbar">
+        <div id="item">
+            <a href="#" class="nav-item link_danhmuc">Áo sơ mi</a>
+        </div>
+        <div id="item">
+            <a href="#" class="nav-item link_danhmuc">Quần âu</a>
+        </div>
+        <div id="item">
+            <a href="#" class="nav-item link_danhmuc">Áo thun</a>
+        </div>
+        <div id="item">
+            <a href="#" class="nav-item link_danhmuc">Áo dài</a>
+        </div>
+        <div id="item">
+            <a href="#" class="nav-item link_danhmuc">Đầm váy</a>
+        </div>
+    </div>
+    <div id="banner">
+        <img src="banner1.png" alt="">
+    </div>
+    <div id="topsanpham">
+        <div id="title_topsp">
+            <span>TOP 05 SẢN PHẨM HOT NHẤT TUẦN</span>
+            <div style="width: 250px; height: 2px; background-color: #000;"></div>
+        </div>
+        <div id="ds_product">
+            <div class="box">
+                <img id="img_clo" src="IMAGE_FOLDER/aothun/Aothun10.jpg" alt="aodai">
+                <div id="sale_box">
+                    <img class="sale" src="https://png.pngtree.com/png-vector/20230520/ourmid/pngtree-red-flash-sale-discount-logo-with-yellow-lightning-vector-png-image_7102022.png" width="10px">
+                </div>
+                <div class="tensp">
+                    <span>Áo thun cotton</span>
+                    <span style="font-weight: bold;"><br>300.000 <sup>đ</sup></span>
+                    <br><button type="button" class="btn btn-outline-danger" onclick="open_Popup(this)">Thêm vào giỏ hàng</button>
+                    <button type="button" class="btn btn-outline-danger" id="fav" onclick="showToast()">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box">
+                <img id="img_clo" src="AODAI/aodai12.png" alt="aodai">
+                <div id="sale_box">
+                    <img class="sale" src="https://png.pngtree.com/png-vector/20230520/ourmid/pngtree-red-flash-sale-discount-logo-with-yellow-lightning-vector-png-image_7102022.png" width="10px">
+
+                </div>
+                <div class="tensp">
+                    <span>Áo dài xanh hướng dương</span>
+                    <span style="font-weight: bold;"><br>300.000 <sup>đ</sup></span>
+                    <br><button type="button" class="btn btn-outline-danger" onclick="open_Popup(this)">Thêm vào giỏ hàng</button>
+                    <button type="button" class="btn btn-outline-danger" id="fav" onclick="showToast()">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box">
+                <img id="img_clo" src="IMAGE_FOLDER/quanau/quanau5.png" alt="aodai">
+                <div id="sale_box">
+                    <img class="sale" src="https://png.pngtree.com/png-vector/20230520/ourmid/pngtree-red-flash-sale-discount-logo-with-yellow-lightning-vector-png-image_7102022.png" width="10px">
+                </div>
+                <div class="tensp">
+                    <span>Quần âu vải lụa</span>
+                    <span style="font-weight: bold;"><br>300.000 <sup>đ</sup></span>
+                    <br><button type="button" class="btn btn-outline-danger" onclick="open_Popup(this)">Thêm vào giỏ hàng</button>
+                    <button type="button" class="btn btn-outline-danger" id="fav" onclick="showToast()">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box">
+                <img id="img_clo" src="IMAGE_FOLDER/aodai/aodai11.png" alt="aodai">
+                <div id="sale_box">
+                    <img class="sale" src="https://png.pngtree.com/png-vector/20230520/ourmid/pngtree-red-flash-sale-discount-logo-with-yellow-lightning-vector-png-image_7102022.png" width="10px">
+
+                </div>
+                <div class="tensp">
+                    <span>Áo dài thanh trắng ngọc</span>
+                    <span style="font-weight: bold;"><br>300.000 <sup>đ</sup></span>
+                    <br><button type="button" class="btn btn-outline-danger" onclick="open_Popup(this)">Thêm vào giỏ hàng</button>
+                    <button type="button" class="btn btn-outline-danger" id="fav" onclick="showToast()">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="topsanphamhot">
+        <div id="title_topsp">
+            <span>TOP 03 SẢN PHẨM BÁN CHẠY NHẤT TRONG THÁNG 10</span>
+            <div style="width: 250px; height: 2px; background-color: #000;"></div>
+        </div>
+        <div id="ds_product">
+            <div class="box">
+                <img id="img_clo" src="IMAGE_FOLDER/quanau/quanau10.png" alt="aodai">
+                <div id="sale_box">
+                    <img class="sale" src="https://png.pngtree.com/png-vector/20230520/ourmid/pngtree-red-flash-sale-discount-logo-with-yellow-lightning-vector-png-image_7102022.png" width="10px">
+                </div>
+                <div class="tensp">
+                    <span>Quần âu thanh lịch</span>
+                    <span style="font-weight: bold;"><br>300.000 <sup>đ</sup></span>
+                    <br><button type="button" class="btn btn-outline-danger" onclick="open_Popup(this)">Thêm vào giỏ hàng</button>
+                    <button type="button" class="btn btn-outline-danger" id="fav" onclick="showToast()">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box">
+                <img id="img_clo" src="IMAGE_FOLDER/somi/somi1.jpg" alt="aodai">
+                <div id="sale_box">
+                    <img class="sale" src="https://png.pngtree.com/png-vector/20230520/ourmid/pngtree-red-flash-sale-discount-logo-with-yellow-lightning-vector-png-image_7102022.png" width="10px">
+                </div>
+                <div class="tensp">
+                    <span>Sơ mi nam/ nữ</span>
+                    <span style="font-weight: bold;"><br>300.000 <sup>đ</sup></span>
+                    <br><button type="button" class="btn btn-outline-danger" onclick="open_Popup(this)">Thêm vào giỏ hàng</button>
+                    <button type="button" class="btn btn-outline-danger" id="fav" onclick="showToast()">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box">
+                <img id="img_clo" src="IMAGE_FOLDER/aodai/aodai2.png" alt="aodai">
+                <div id="sale_box">
+                    <img class="sale" src="https://png.pngtree.com/png-vector/20230520/ourmid/pngtree-red-flash-sale-discount-logo-with-yellow-lightning-vector-png-image_7102022.png" width="10px">
+
+                </div>
+                <div class="tensp">
+                    <span>Áo dài vườn trường</span>
+                    <span style="font-weight: bold;"><br>300.000 <sup>đ</sup></span>
+                    <br><button type="button" class="btn btn-outline-danger" onclick="open_Popup(this)">Thêm vào giỏ hàng</button>
+                    <button type="button" class="btn btn-outline-danger" id="fav" onclick="showToast()">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="thamkhao">
+        <p>Mời bạn xem thêm <a href="#"> các mẫu mới khác tại đây</a></p>
+    </div>
+    <div id="thongbao_fav" class="toast align-items-center border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+            Sản phẩm đã được thêm vào phần yêu thích!
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <img src="logo1.png" alt="OWEN Logo" class="footer-logo">
+                <h4>CÔNG TY CỔ PHẦN THỜI TRANG CLOUE - VIET NAM</h4>
+                <p>Hotline: 1900 1234<br></p>
+
+                <p><strong>VP Phía Nam:</strong> 280 An Dương Vương, Phường Chợ Quán, TP.HCM.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>GIỚI THIỆU CLOUE</h4>
+                <ul>
+                    <li><a href="#">Giới thiệu</a></li>
+                    <li><a href="#">Hệ thống cửa hàng</a></li>
+                    <li><a href="#">Liên hệ với Owen</a></li>
+                    <li><a href="#">Chính sách bảo mật</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>HỖ TRỢ KHÁCH HÀNG</h4>
+                <ul>
+                    <li><a href="#">Hỏi đáp</a></li>
+                    <li><a href="#">Chính sách khách hàng thân thiết</a></li>
+                    <li><a href="#">Chính sách vận chuyển</a></li>
+                    <li><a href="#">Hướng dẫn chọn kích cỡ</a></li>
+                    <li><a href="#">Hướng dẫn thanh toán</a></li>
+                    <li><a href="#">Quy định đổi hàng</a></li>
+                    <li><a href="#">Hướng dẫn mua hàng</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>KẾT NỐI</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="bi bi-facebook"></i></a>
+                    <a href="#"><i class="bi bi-instagram"></i></a>
+                    <a href="#"><i class="bi bi-youtube"></i></a>
+                    <a href="#"><i class="bi bi-tiktok"></i></a>
+                </div>
+                <h4>PHƯƠNG THỨC THANH TOÁN</h4>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" class="pay-icon">
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            © 2025 by GROUP 1
+        </div>
+    </footer>
+<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body pt-0">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <img id="main_IMG_popup" src="/IMAGE_FOLDER/aodai/aodai1.png" 
+                                    class="img-fluid w-100" 
+                                    alt="Ảnh lớn" 
+                                    id="mainProductImage">
+                            </div>
+                            <div class="col-md-5">
+                                <h3 id="modalProductName"><span id ="name_product">Áo thun cotton</span></h3>
+                                
+                                <p class="h4 text-danger fw-bold" id="modalProductPrice">
+                                    300.0000 <sup>đ</sup> 
+                                    <span class="text-muted text-decoration-line-through fs-6 fw-normal">400.000<sup>đ</sup></span>
+                                </p>
+                                
+                                <input type="hidden" id="modalProductPriceValue" value="249000">
+
+                                <div class="mt-3">
+                                    <p class="mb-1"><strong>Màu sắc:</strong></p>
+                                    <input type="radio" class="btn-check" name="colorOptions" id="colorWhite" value="white" checked data-image-src="damvay6.png">
+                                    <label class="btn btn-outline-dark btn-sm me-1" for="colorWhite">Trắng</label>
+                                    
+                                    <input type="radio" class="btn-check" name="colorOptions" id="colorBlack" value="black"
+                                        data-image-src="damvay7.png">
+                                    <label class="btn btn-outline-dark btn-sm me-1" for="colorBlack">Đen</label>
+                                    
+                                    <input type="radio" class="btn-check" name="colorOptions" id="colorBlue" value="blue"
+                                        data-image-src="damvay8.png">
+                                    <label class="btn btn-outline-dark btn-sm" for="colorBlue">Xanh</label>
+                                </div>
+                                <div class="mt-3">
+                                    <p class="mb-1"><strong>Kích thước:</strong></p>
+                                    <input type="radio" class="btn-check" name="sizeOptions" id="sizeS" value="S" checked>
+                                    <label class="btn btn-outline-dark btn-sm me-1" for="sizeS" style="width: 40px;">S</label>
+                                    
+                                    <input type="radio" class="btn-check" name="sizeOptions" id="sizeM" value="M">
+                                    <label class="btn btn-outline-dark btn-sm me-1" for="sizeM" style="width: 40px;">M</label>
+                                    
+                                    <input type="radio" class="btn-check" name="sizeOptions" id="sizeL" value="L">
+                                    <label class="btn btn-outline-dark btn-sm" for="sizeL" style="width: 40px;">L</label>
+                                </div>
+                                
+                                <div class="mt-3">
+                                    <p class="mb-1"><strong>Số lượng:</strong></p>
+                                    <div class="input-group input-group-quantity" style="width: 140px;">
+                                        <button class="btn btn-outline-secondary" type="button" id="button-minus">-</button>
+                                        <input type="text" class="form-control" value="1" id="quantityInput" aria-label="Số lượng" inputmode="numeric">
+                                        <button class="btn btn-outline-secondary" type="button" id="button-plus">+</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-grid mt-4">
+                                    <button class="btn btn-danger" id="addToCartBtn">Thêm vào giỏ hàng</button>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <script src="script.js"></script>
+    <script>
+        function open_Popup(e){
+            const box = e.closest(".box");
+            const img = box.querySelector("img");
+            document.getElementById("main_IMG_popup").src = img.src;
+            const modal = new bootstrap.Modal(document.getElementById('exampleModalToggle'));
+            modal.show();
+        }
+        let cnt = 0;
+
+        document.querySelectorAll('#img_clo').forEach(img => {
+            cnt+=1;
+            // img.src = "/IMAGE_FOLDER/"+type_product.value+"/"+type_product.value+cnt+mr;
+            img.addEventListener('click', () => {
+                const box = img.closest('.box');
+                const nameElement = box.querySelector('.tensp span');
+                console.log(nameElement.innerText);
+                let val = img.src;
+                const data = {
+                    value: val,
+                    name_product: nameElement.innerText
+                };
+
+                localStorage.setItem("productData", JSON.stringify(data));
+                window.location.href = "trangchitiet.html";
+            });
+        });
+        kiemtra_danhmuc();
+    </script>
+</body>
+</html>

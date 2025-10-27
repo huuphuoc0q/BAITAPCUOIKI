@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLOUE - SHOP</title>
+    <link rel="stylesheet" href="style_chitiet.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Ga+Maamli&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rowdies:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 40px;
+        flex-direction: row;
+    }
+
+    .product-image {
+        width: 45%;
+        text-align: center;
+    }
+
+    .product-image img {
+        width: 80%;
+        border-radius: 6px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .product-details {
+        width: 45%;
+        margin-left: 40px;
+    }
+
+    h2 {
+        margin-top: 0;
+        color: #333;
+    }
+
+    .price {
+        font-size: 26px;
+        color: #d0021b;
+        font-weight: bold;
+    }
+
+    .old-price {
+        text-decoration: line-through;
+        color: gray;
+        margin-left: 10px;
+        font-size: 16px;
+    }
+
+    .discount {
+        color: #fff;
+        background-color: #d0021b;
+        padding: 4px 8px;
+        border-radius: 5px;
+        font-size: 13px;
+        margin-left: 8px;
+    }
+
+    .size-options button {
+        background-color: white;
+        border: 1px solid #ccc;
+        padding: 8px 16px;
+        margin: 5px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: 0.3s;
+    }
+
+    .size-options button.selected {
+        border-color: #d0021b;
+        color: #d0021b;
+        font-weight: bold;
+    }
+
+    .quantity {
+        display: flex;
+        align-items: center;
+        margin: 10px 0;
+    }
+
+    .quantity button {
+        width: 30px;
+        height: 30px;
+        border: 1px solid #ccc;
+        background-color: white;
+        cursor: pointer;
+    }
+
+    .quantity input {
+        width: 50px;
+        text-align: center;
+        border: 1px solid #ccc;
+        margin: 0 5px;
+    }
+
+    .add-cart, .buy-now {
+        display: inline-block;
+        padding: 12px 30px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+
+    .add-cart {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    .buy-now {
+        background-color: #d0021b;
+        color: white;
+        margin-left: 10px;
+    }
+
+    .buy-now:hover {
+        background-color: #b20017;
+    }
+
+    .add-cart:hover {
+        background-color: #45a049;
+    }
+
+    </style>
+</head>
+<body>
+    <div id="header">
+        <div id="logo">
+            <a href="index.html">
+                <img src="logo1.png" alt="Logo" class="logo">
+            </a>
+        </div>
+        <div id="search_box">
+            <form class="d-flex" role="search">
+                <input style="border-radius: 25px ;" class="form-control me-2" type="search" placeholder="Bạn cần tìm gì? " aria-label="Search"/>
+                <button class="btn btn-outline-danger" type="submit">
+                    <i class="bi bi-search"></i>
+                </button>
+            </form>
+        </div>
+        <div id="hotline">
+            <div id="phone">
+                <i class="bi bi-telephone-fill"></i>
+
+            </div>
+            <span> HOTLINE: <span style="font-weight: bold;"> 0123456789</span></span>
+        </div>
+        <div id="account" style="cursor: pointer;">
+            <div id="login">Đăng nhập</div>
+            <div id="logout">Đăng kí</div>
+        </div>
+        <div id="giohang" style="cursor: pointer;">
+            <div id="xe">
+                <i class="bi bi-cart4" style="font-size: 1rem;"></i>
+            </div>            
+            <span id="money">1.000.000<sup>đ</sup></span>
+
+        </div>
+    </div>
+    <div id="navbar">
+        <div id="item">
+            <a href="#" class="nav-item link_danhmuc">Áo sơ mi</a>
+        </div>
+        <div id="item">
+            <a href="#" class="nav-item link_danhmuc">Quần âu</a>
+        </div>
+        <div id="item">
+            <a href="#" class="nav-item link_danhmuc">Áo thun</a>
+        </div>
+        <div id="item">
+            <a href="#" class="nav-item link_danhmuc">Áo dài</a>
+        </div>
+        <div id="item">
+            <a href="#" class="nav-item link_danhmuc">Đầm váy</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="product-image">
+            <img id="mainImage" src="/IMAGE_FOLDER/aodai/aodai1.png" alt="Áo dài Merry">
+        </div>
+
+        <div class="product-details">
+            <h2 id="name_product">Áo dài Merry </h2>
+            <p>Mã SP: <b>15FDL8007ST</b></p>
+            <p>256 lượt mua</p>
+            <p>
+                <span class="price" id="price">300.000<sup>đ</sup></span>
+                <span class="old-price">400.000<sup>đ</sup></span>
+                <span class="discount">-25%</span>
+            </p>
+
+            <h4>Chọn size của bạn:</h4>
+            <div class="size-options">
+                <button data-size="L">L</button>
+                <button data-size="M">M</button>
+                <button data-size="S">S</button>
+            </div>
+
+            <h4>Số lượng:</h4>
+            <div class="quantity">
+                <button id="minus">-</button>
+                <input type="text" id="quantity" value="1">
+                <button id="plus">+</button>
+            </div>
+
+            <div>
+                <button class="add-cart" id="addCartBtn">THÊM VÀO GIỎ HÀNG</button>
+                <button class="buy-now" id="buyNowBtn" onclick="open_Popup(this)">MUA NGAY</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <img src="logo1.png" alt="OWEN Logo" class="footer-logo">
+                <h4>CÔNG TY CỔ PHẦN THỜI TRANG CLOUE - VIET NAM</h4>
+                <p>Hotline: 1900 1234<br></p>
+
+                <p><strong>VP Phía Nam:</strong> 280 An Dương Vương, Phường Chợ Quán, TP.HCM.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>GIỚI THIỆU CLOUE</h4>
+                <ul>
+                    <li><a href="#">Giới thiệu</a></li>
+                    <li><a href="#">Hệ thống cửa hàng</a></li>
+                    <li><a href="#">Liên hệ với Owen</a></li>
+                    <li><a href="#">Chính sách bảo mật</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>HỖ TRỢ KHÁCH HÀNG</h4>
+                <ul>
+                    <li><a href="#">Hỏi đáp</a></li>
+                    <li><a href="#">Chính sách khách hàng thân thiết</a></li>
+                    <li><a href="#">Chính sách vận chuyển</a></li>
+                    <li><a href="#">Hướng dẫn chọn kích cỡ</a></li>
+                    <li><a href="#">Hướng dẫn thanh toán</a></li>
+                    <li><a href="#">Quy định đổi hàng</a></li>
+                    <li><a href="#">Hướng dẫn mua hàng</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>KẾT NỐI</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="bi bi-facebook"></i></a>
+                    <a href="#"><i class="bi bi-instagram"></i></a>
+                    <a href="#"><i class="bi bi-youtube"></i></a>
+                    <a href="#"><i class="bi bi-tiktok"></i></a>
+                </div>
+                <h4>PHƯƠNG THỨC THANH TOÁN</h4>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" class="pay-icon">
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            © 2025 by GROUP 1
+        </div>
+    </footer>
+<div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Giỏ hàng</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="row border-bottom mb-2 pb-2 d-none d-md-flex fw-bold">
+                        <div class="col-5">Sản phẩm</div>
+                        <div class="col-2 text-center">Đơn giá</div>
+                        <div class="col-2 text-center">Số lượng</div>
+                        <div class="col-2 text-center">Thành tiền</div>
+                        <div class="col-1"></div> </div>
+                    
+                    <div id="cartItemList">
+                        </div>
+                </div>
+
+                <div class="modal-footer justify-content-between"> <div>
+                        <span>Tạm tính:</span>
+                        <span class="h5 text-danger" id="cartSubtotal">0đ</span>
+                    </div>
+                    <div> <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Quay lại mua hàng</button>
+                        <a href="#" class="btn btn-success" role="button">Thanh toán ngay</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+<script>
+    const product = JSON.parse(localStorage.getItem("productData"));
+    const img_main = document.getElementById("mainImage");
+    console.log(product.name_product);
+    document.getElementById("name_product").innerText = product.name_product;
+    img_main.src = product.value;
+
+    // Chọn size áo
+    const sizeBtns = document.querySelectorAll('.size-options button');
+    sizeBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            sizeBtns.forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            selectedSize = btn.dataset.size;
+        });
+    });
+
+    // Tăng / giảm số lượng
+    const quantityInput = document.getElementById('quantity');
+    document.getElementById('plus').onclick = () => quantityInput.value = +quantityInput.value + 1;
+    document.getElementById('minus').onclick = () => {
+        if (quantityInput.value > 1) quantityInput.value = +quantityInput.value - 1;
+    };
+
+    function open_Popup(e){
+            // const box = e.closest(".box_danhmuc");
+            // const img = box.querySelector("img");
+            // document.getElementById("main_IMG_popup").src = img.src;
+            const modal = new bootstrap.Modal(document.getElementById('exampleModalToggle2'));
+            modal.show();
+        }
+    kiemtra_danhmuc();
+</script>
+    
+</body>
+</html>
