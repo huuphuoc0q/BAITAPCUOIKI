@@ -391,7 +391,7 @@
             let t = img.nextElementSibling.nextElementSibling.firstChild;
             // img.src = "/IMAGE_FOLDER/"+type_product.value+"/"+type_product.value+cnt+mr;
             // img.src = type_product.value+cnt+mr;
-            img.src = "IMAGE_FOLDER/somi/somi1.jpg";
+            img.src = "IMAGE_FOLDER/"+type_product.value+"/"+type_product.value+cnt+mr;
             img.addEventListener('click', () => {
                 let val = img.src;
                 const data = {
@@ -414,4 +414,5 @@
         
     </script>
 </body>
+
 </html>
