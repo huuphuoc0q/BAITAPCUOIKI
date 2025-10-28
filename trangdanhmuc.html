@@ -484,7 +484,8 @@
                 price: 300000,
                 size: selectedSize,
                 quantity: parseInt(document.getElementById("quantityInput").value),
-                image: document.getElementById("img_clo").src
+                // image: document.getElementById("img_clo").src
+                image: document.getElementById("main_IMG_popup").src
             };
             showToast2();
             let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -572,3 +573,4 @@
     </script>
 </body>
 </html>
+
