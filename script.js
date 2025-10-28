@@ -6,7 +6,14 @@ function showToast(){
     });
     toast.show();
 }
-
+function showToast2(){
+    const toastE2 = document.getElementById('thongbao_add');
+    const toast = new bootstrap.Toast(toastE2, {
+      autohide: true,   
+      delay: 2000       
+    });
+    toast.show();
+}
 function kiemtra_danhmuc(){
   document.querySelectorAll('.link_danhmuc').forEach(link => {
         link.addEventListener('click', function(e) {
@@ -34,7 +41,6 @@ function kiemtra_danhmuc(){
                     val = "none";
                     break;
                 }
-
             const data = { 
                 value: val,
                 type_: type_danhmuc
@@ -44,3 +50,9 @@ function kiemtra_danhmuc(){
         });
     });
 }
+
+function  update_totalmoney(){
+    let total = localStorage.getItem("total");
+    document.getElementById("money").innerHTML = total + "<sup>đ</sup>";
+}
+
