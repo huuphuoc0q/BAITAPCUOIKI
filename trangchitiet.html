@@ -213,12 +213,19 @@
             </div>
 
             <div>
-                <button class="add-cart" id="addCartBtn">THÊM VÀO GIỎ HÀNG</button>
+                <button class="add-cart" id="addCartBtn" onclick="addProduct()">THÊM VÀO GIỎ HÀNG</button>
                 <button class="buy-now" id="buyNowBtn" onclick="open_Popup(this)">MUA NGAY</button>
             </div>
         </div>
     </div>
-
+    <div id="thongbao_add" class="toast align-items-center border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+                Sản phẩm đã được thêm vào giỏ hàng!
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-col">
@@ -269,52 +276,57 @@
             © 2025 by GROUP 1
         </div>
     </footer>
-<div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered modal-xl">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Giỏ hàng</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-
-                <div class="modal-body">
-                    <div class="row border-bottom mb-2 pb-2 d-none d-md-flex fw-bold">
-                        <div class="col-5">Sản phẩm</div>
-                        <div class="col-2 text-center">Đơn giá</div>
-                        <div class="col-2 text-center">Số lượng</div>
-                        <div class="col-2 text-center">Thành tiền</div>
-                        <div class="col-1"></div> </div>
-                    
-                    <div id="cartItemList">
-                        </div>
-                </div>
-
-                <div class="modal-footer justify-content-between"> <div>
-                        <span>Tạm tính:</span>
-                        <span class="h5 text-danger" id="cartSubtotal">0đ</span>
+    <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Giỏ hàng</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div> <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Quay lại mua hàng</button>
-                        <a href="#" class="btn btn-success" role="button">Thanh toán ngay</a>
+
+                    <div class="modal-body">
+                        <div class="row border-bottom mb-2 pb-2 d-none d-md-flex fw-bold">
+                            <div class="col-5">Sản phẩm</div>
+                            <div class="col-2 text-center">Đơn giá</div>
+                            <div class="col-2 text-center">Số lượng</div>
+                            <div class="col-2 text-center">Thành tiền</div>
+                            <div class="col-1"></div> </div>
+                        
+                        <div id="cartItemList">
+                            </div>
+                    </div>
+
+                    <div class="modal-footer justify-content-between"> <div>
+                            <span>Tạm tính:</span>
+                            <span class="h5 text-danger" id="cartSubtotal">0đ</span>
+                        </div>
+                        <div> <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Quay lại mua hàng</button>
+                            <a href="#" class="btn btn-success" role="button">Thanh toán ngay</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+
+    
     <script src="script.js"></script>
 <script>
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    console.log(cart);
     const product = JSON.parse(localStorage.getItem("productData"));
     const img_main = document.getElementById("mainImage");
-    console.log(product.name_product);
     document.getElementById("name_product").innerText = product.name_product;
     img_main.src = product.value;
 
     // Chọn size áo
+    let selectedSize = null;
     const sizeBtns = document.querySelectorAll('.size-options button');
     sizeBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             sizeBtns.forEach(b => b.classList.remove('selected'));
             btn.classList.add('selected');
             selectedSize = btn.dataset.size;
+            console.log(selectedSize);
         });
     });
 
@@ -324,16 +336,96 @@
     document.getElementById('minus').onclick = () => {
         if (quantityInput.value > 1) quantityInput.value = +quantityInput.value - 1;
     };
-
-    function open_Popup(e){
-            // const box = e.closest(".box_danhmuc");
-            // const img = box.querySelector("img");
-            // document.getElementById("main_IMG_popup").src = img.src;
-            const modal = new bootstrap.Modal(document.getElementById('exampleModalToggle2'));
-            modal.show();
+    function addProduct() {
+        const product = {
+            name: document.getElementById("name_product").innerText,
+            price: 300000,
+            size: selectedSize,
+            quantity: parseInt(document.getElementById("quantity").value),
+            image: document.getElementById("mainImage").src
+        };
+        if (!selectedSize) {
+            alert("Vui lòng chọn kích thước (size) trước khi thêm vào giỏ hàng!");
+            return;
         }
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const existing = cart.find(item => item.name === product.name && item.size === product.size);
+
+        if (existing) {
+            existing.quantity += product.quantity;
+        } else {
+            cart.push(product);
+            let total = localStorage.getItem("total");
+            let totalmoney = parseInt(total)+300000*product.quantity;
+            localStorage.setItem("total",totalmoney);
+        }
+        localStorage.setItem("cart", JSON.stringify(cart));
+        showToast2();
+        update_totalmoney();
+
+    };
+    document.getElementById("giohang").addEventListener("click", function() {
+            open_Popup();
+        });
+    function open_Popup(){
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        function formatCurrency(number) {
+            return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(number).replace(/\s/g, '');
+        }
+
+    // vẽ lại giỏ hàng
+        function renderAllCarts() {
+            const cartItemList = document.getElementById('cartItemList');
+            // const miniCartList = document.getElementById('miniCartList');
+            const cartSubtotal = document.getElementById('cartSubtotal');
+            cartItemList.innerHTML = '';
+            let subtotal = 0; 
+                cart.forEach((item, index) => {
+                    const itemTotal = item.price * item.quantity;
+                    subtotal += itemTotal;
+
+                    // vẽ giỏ hàng modal 2
+                    const cartItemRow = document.createElement('div');
+                    cartItemRow.className = 'row align-items-center mb-3 cart-item';
+                    cartItemRow.setAttribute('data-index', index); 
+                    cartItemRow.innerHTML = `
+                        <div class="col-5">
+                            <div class="d-flex align-items-center">
+                                <img src="${item.image}" class="img-fluid" style="width: 80px;" alt="${item.name}">
+                                <div class="ms-3 cart-item-name">${item.name} - ${item.size}</div>
+                            </div>
+                        </div>
+                        <div class="col-2 text-center cart-item-price">${formatCurrency(item.price)}</div>
+                        <div class="col-2 text-center">
+                            <input type="number" class="form-control form-control-sm mx-auto cart-item-quantity" value="${item.quantity}" style="width: 60px;" min="1" data-index="${index}">
+                        </div>
+                        <div class="col-2 text-center cart-item-total">${formatCurrency(itemTotal)}</div>
+                        <div class="col-1 text-center">
+                            <button class="btn btn-sm btn-outline-danger btn-delete-item" data-index="${index}">X</button>
+                        </div>
+                    `;
+                    cartItemList.appendChild(cartItemRow);
+                });
+            
+            
+            // cập nhật tổng tiền
+            const totalText = formatCurrency(subtotal);
+            cartSubtotal.innerText = totalText;
+            localStorage.setItem("total",parseInt(subtotal));
+        }
+
+            console.log(cart);
+            renderAllCarts();
+
+            const modal = new bootstrap.Modal(document.getElementById('exampleModalToggle2'));
+            setTimeout(() => {
+                modal.show();
+            }, 200);
+            update_totalmoney();
+    }
     kiemtra_danhmuc();
+    update_totalmoney();
 </script>
-    
 </body>
 </html>
