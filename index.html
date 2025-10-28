@@ -561,7 +561,7 @@
                 price: 300000,
                 size: selectedSize,
                 quantity: parseInt(document.getElementById("quantityInput").value),
-                image: document.getElementById("img_clo").src
+                image: document.getElementById("main_IMG_popup").src
             };
             const existing = cart.find(item => item.name === product.name && item.size === product.size);
 
@@ -664,6 +664,7 @@
     </script>
 </body>
 </html>
+
 
 
 
