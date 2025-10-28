@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -562,6 +562,609 @@
         }
 
             console.log(cart);
+            renderAllCarts();
+
+            const modal = new bootstrap.Modal(document.getElementById('exampleModalToggle2'));
+            setTimeout(() => {
+                modal.show();
+            }, 200);
+            update_totalmoney();
+    }
+    </script>
+</body>
+</html>
+
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLOUE - SHOP</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Ga+Maamli&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rowdies:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="header">
+        <div id="logo">
+            <a href="index.html">
+                <img src="logo1.png" alt="Logo" class="logo">
+            </a>
+        </div>
+        <div id="search_box">
+            <form class="d-flex" role="search">
+                <input style="border-radius: 25px ;" class="form-control me-2" type="search" placeholder="Bạn cần tìm gì? " aria-label="Search"/>
+                <button class="btn btn-outline-danger" type="submit">
+                    <i class="bi bi-search"></i>
+                </button>
+            </form>
+        </div>
+        <div id="hotline">
+            <div id="phone">
+                <i class="bi bi-telephone-fill"></i>
+
+            </div>
+            <span> HOTLINE: <span style="font-weight: bold;"> 0123456789</span></span>
+        </div>
+        <div id="account" style="cursor: pointer;">
+            <div id="login">Đăng nhập</div>
+            <div id="logout">Đăng kí</div>
+        </div>
+        <div id="giohang" style="cursor: pointer;">
+            <div id="xe">
+                <i class="bi bi-cart4" style="font-size: 1rem;"></i>
+            </div>            
+            <!-- <span id="money">1.000.000<sup>đ</sup></span> -->
+            <span id="money" style="color: red; font-weight: bold;">1.000.000<sup>đ</sup></span>
+
+
+        </div>
+    </div>
+    <div id="navbar">
+        <div id="item">
+            <a href="#" class="nav-item link_danhmuc">Áo sơ mi</a>
+        </div>
+        <div id="item">
+            <a href="#" class="nav-item link_danhmuc">Quần âu</a>
+        </div>
+        <div id="item">
+            <a href="#" class="nav-item link_danhmuc">Áo thun</a>
+        </div>
+        <div id="item">
+            <a href="#" class="nav-item link_danhmuc">Áo dài</a>
+        </div>
+        <div id="item">
+            <a href="#" class="nav-item link_danhmuc">Đầm váy</a>
+        </div>
+    </div>
+    <div id="show_danhmuc">
+        <div id="dangxem">
+            <P style="margin-left: 10px;">Bạn đang xem: <span id="dangxem_title" style="color: rgb(50, 50, 231); ">SƠ MI</span></P>
+            <div class="mac"> 
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Mặc định</option>
+                    <option value="1">Giá thấp đến cao</option>
+                    <option value="2">Giá cao đến thấp</option>
+                </select>
+            </div>
+        </div>
+        <div id="row">
+            <div class="box_danhmuc">
+                <img id="img_clo" src="IMAGE_FOLDER/Somi/somi1.jpg" alt="aodai">
+                <div id="sale_box">
+                    <img class="sale" src="https://png.pngtree.com/png-vector/20230520/ourmid/pngtree-red-flash-sale-discount-logo-with-yellow-lightning-vector-png-image_7102022.png" width="10px">
+                </div>
+                <div class="tensp"><span id ="name_product">Áo thun cotton</span>
+
+                    <span style="font-weight: bold;"><br>300.000 <sup>đ</sup></span>
+                    <br><button type="button" class="btn btn-outline-danger" onclick="open_Popup(this)">Thêm vào giỏ hàng</button>
+
+                    <button type="button" class="btn btn-outline-danger" id="fav" onclick="showToast()">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box_danhmuc">
+                <img id="img_clo" src="IMAGE_FOLDER/Somi/somi2.jpg" alt="aodai">
+                <div id="sale_box">
+                    <img class="sale" src="https://png.pngtree.com/png-vector/20230520/ourmid/pngtree-red-flash-sale-discount-logo-with-yellow-lightning-vector-png-image_7102022.png" width="10px">
+                </div>
+                <div class="tensp"><span id ="name_product">Áo thun cotton</span>
+                    <span style="font-weight: bold;"><br>300.000 <sup>đ</sup></span>
+                    <br><button type="button" class="btn btn-outline-danger" onclick="open_Popup(this)">Thêm vào giỏ hàng</button>
+
+                    <button type="button" class="btn btn-outline-danger" id="fav" onclick="showToast()">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box_danhmuc">
+                <img id="img_clo" src="IMAGE_FOLDER/Somi/somi3.jpg" alt="aodai">
+                <div id="sale_box">
+                    <img class="sale" src="https://png.pngtree.com/png-vector/20230520/ourmid/pngtree-red-flash-sale-discount-logo-with-yellow-lightning-vector-png-image_7102022.png" width="10px">
+                </div>
+                <div class="tensp"><span id ="name_product">Áo thun cotton</span>
+                    <span style="font-weight: bold;"><br>300.000 <sup>đ</sup></span>
+                    <br><button type="button" class="btn btn-outline-danger" onclick="open_Popup(this)">Thêm vào giỏ hàng</button>
+
+                    <button type="button" class="btn btn-outline-danger" id="fav" onclick="showToast()">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box_danhmuc">
+                <img id="img_clo" src="IMAGE_FOLDER/Somi/somi4.jpg" alt="aodai">
+                <div id="sale_box">
+                    <img class="sale" src="https://png.pngtree.com/png-vector/20230520/ourmid/pngtree-red-flash-sale-discount-logo-with-yellow-lightning-vector-png-image_7102022.png" width="10px">
+                </div>
+                <div class="tensp"><span id ="name_product">Áo thun cotton</span>
+                    <span style="font-weight: bold;"><br>300.000 <sup>đ</sup></span>
+                    <br><button type="button" class="btn btn-outline-danger" onclick="open_Popup(this)">Thêm vào giỏ hàng</button>
+
+                    <button type="button" class="btn btn-outline-danger" id="fav" onclick="showToast()">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box_danhmuc">
+                <img id="img_clo" src="IMAGE_FOLDER/Somi/somi5.jpg" alt="aodai">
+                <div id="sale_box">
+                    <img class="sale" src="https://png.pngtree.com/png-vector/20230520/ourmid/pngtree-red-flash-sale-discount-logo-with-yellow-lightning-vector-png-image_7102022.png" width="10px">
+                </div>
+                <div class="tensp"><span id ="name_product">Áo thun cotton</span>
+                    <span style="font-weight: bold;"><br>300.000 <sup>đ</sup></span>
+                    <br><button type="button" class="btn btn-outline-danger" onclick="open_Popup(this)">Thêm vào giỏ hàng</button>
+
+                    <button type="button" class="btn btn-outline-danger" id="fav" onclick="showToast()">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box_danhmuc">
+                <img id="img_clo" src="IMAGE_FOLDER/Somi/somi6.jpg" alt="aodai">
+                <div id="sale_box">
+                    <img class="sale" src="https://png.pngtree.com/png-vector/20230520/ourmid/pngtree-red-flash-sale-discount-logo-with-yellow-lightning-vector-png-image_7102022.png" width="10px">
+                </div>
+                <div class="tensp"><span id ="name_product">Áo thun cotton</span>
+                    <span style="font-weight: bold;"><br>300.000 <sup>đ</sup></span>
+                    <br><button type="button" class="btn btn-outline-danger" onclick="open_Popup(this)">Thêm vào giỏ hàng</button>
+
+                    <button type="button" class="btn btn-outline-danger" id="fav" onclick="showToast()">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box_danhmuc">
+                <img id="img_clo" src="IMAGE_FOLDER/Somi/somi7.jpg" alt="aodai">
+                <div id="sale_box">
+                    <img class="sale" src="https://png.pngtree.com/png-vector/20230520/ourmid/pngtree-red-flash-sale-discount-logo-with-yellow-lightning-vector-png-image_7102022.png" width="10px">
+                </div>
+                <div class="tensp"><span id ="name_product">Áo thun cotton</span>
+                    <span style="font-weight: bold;"><br>300.000 <sup>đ</sup></span>
+                    <br><button type="button" class="btn btn-outline-danger" onclick="open_Popup(this)">Thêm vào giỏ hàng</button>
+
+                    <button type="button" class="btn btn-outline-danger" id="fav" onclick="showToast()">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box_danhmuc">
+                <img id="img_clo" src="IMAGE_FOLDER/Somi/somi8.jpg" alt="aodai">
+                <div id="sale_box">
+                    <img class="sale" src="https://png.pngtree.com/png-vector/20230520/ourmid/pngtree-red-flash-sale-discount-logo-with-yellow-lightning-vector-png-image_7102022.png" width="10px">
+                </div>
+                <div class="tensp"><span id ="name_product">Áo thun cotton</span>
+                    <span style="font-weight: bold;"><br>300.000 <sup>đ</sup></span>
+                    <br><button type="button" class="btn btn-outline-danger" onclick="open_Popup(this)">Thêm vào giỏ hàng</button>
+
+                    <button type="button" class="btn btn-outline-danger" id="fav" onclick="showToast()">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box_danhmuc">
+                <img id="img_clo" src="IMAGE_FOLDER/Somi/somi9.jpg" alt="aodai">
+                <div id="sale_box">
+                    <img class="sale" src="https://png.pngtree.com/png-vector/20230520/ourmid/pngtree-red-flash-sale-discount-logo-with-yellow-lightning-vector-png-image_7102022.png" width="10px">
+                </div>
+                <div class="tensp"><span id ="name_product">Áo thun cotton</span>
+                    <span style="font-weight: bold;"><br>300.000 <sup>đ</sup></span>
+                    <br><button type="button" class="btn btn-outline-danger" onclick="open_Popup(this)">Thêm vào giỏ hàng</button>
+
+                    <button type="button" class="btn btn-outline-danger" id="fav" onclick="showToast()">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box_danhmuc">
+                <img id="img_clo" src="IMAGE_FOLDER/Somi/somi10.jpg" alt="aodai">
+                <div id="sale_box">
+                    <img class="sale" src="https://png.pngtree.com/png-vector/20230520/ourmid/pngtree-red-flash-sale-discount-logo-with-yellow-lightning-vector-png-image_7102022.png" width="10px">
+                </div>
+                <div class="tensp"><span id ="name_product">Áo thun cotton</span>
+                    <span style="font-weight: bold;"><br>300.000 <sup>đ</sup></span>
+                    <br><button type="button" class="btn btn-outline-danger" onclick="open_Popup(this)">Thêm vào giỏ hàng</button>
+
+                    <button type="button" class="btn btn-outline-danger" id="fav" onclick="showToast()">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box_danhmuc">
+                <img id="img_clo" src="IMAGE_FOLDER/Somi/somi11.jpg" alt="aodai">
+                <div id="sale_box">
+                    <img class="sale" src="https://png.pngtree.com/png-vector/20230520/ourmid/pngtree-red-flash-sale-discount-logo-with-yellow-lightning-vector-png-image_7102022.png" width="10px">
+                </div>
+                <div class="tensp"><span id ="name_product">Áo thun cotton</span>
+                    <span style="font-weight: bold;"><br>300.000 <sup>đ</sup></span>
+                    <br><button type="button" class="btn btn-outline-danger" onclick="open_Popup(this)">Thêm vào giỏ hàng</button>
+
+                    <button type="button" class="btn btn-outline-danger" id="fav" onclick="showToast()">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box_danhmuc">
+                <img id="img_clo" src="IMAGE_FOLDER/Somi/somi12.jpg" alt="aodai">
+                <div id="sale_box">
+                    <img class="sale" src="https://png.pngtree.com/png-vector/20230520/ourmid/pngtree-red-flash-sale-discount-logo-with-yellow-lightning-vector-png-image_7102022.png" width="10px">
+                </div>
+                <div class="tensp"><span id ="name_product">Áo thun cotton</span>
+                    <span style="font-weight: bold;"><br>300.000 <sup>đ</sup></span>
+                    <br><button type="button" class="btn btn-outline-danger" onclick="open_Popup(this)">Thêm vào giỏ hàng</button>
+
+                    <button type="button" class="btn btn-outline-danger" id="fav" onclick="showToast()">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <div id="thongbao_fav" class="toast align-items-center border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+            Sản phẩm đã được thêm vào phần yêu thích!
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+    <div id="thongbao_add" class="toast align-items-center border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+                Sản phẩm đã được thêm vào giỏ hàng!
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Giỏ hàng</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="row border-bottom mb-2 pb-2 d-none d-md-flex fw-bold">
+                            <div class="col-5">Sản phẩm</div>
+                            <div class="col-2 text-center">Đơn giá</div>
+                            <div class="col-2 text-center">Số lượng</div>
+                            <div class="col-2 text-center">Thành tiền</div>
+                            <div class="col-1"></div> </div>
+                        
+                        <div id="cartItemList">
+                            </div>
+                    </div>
+
+                    <div class="modal-footer justify-content-between"> <div>
+                            <span>Tạm tính:</span>
+                            <span class="h5 text-danger" id="cartSubtotal">0đ</span>
+                        </div>
+                        <div> <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Quay lại mua hàng</button>
+                            <a href="#" class="btn btn-success" role="button">Thanh toán ngay</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <img src="logo1.png" alt="OWEN Logo" class="footer-logo">
+                <h4>CÔNG TY CỔ PHẦN THỜI TRANG CLOUE - VIET NAM</h4>
+                <p>Hotline: 1900 1234<br></p>
+
+                <p><strong>VP Phía Nam:</strong> 280 An Dương Vương, Phường Chợ Quán, TP.HCM.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>GIỚI THIỆU CLOUE</h4>
+                <ul>
+                    <li><a href="#">Giới thiệu</a></li>
+                    <li><a href="#">Hệ thống cửa hàng</a></li>
+                    <li><a href="#">Liên hệ với CLOUE</a></li>
+                    <li><a href="#">Chính sách bảo mật</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>HỖ TRỢ KHÁCH HÀNG</h4>
+                <ul>
+                    <li><a href="#">Hỏi đáp</a></li>
+                    <li><a href="#">Chính sách khách hàng thân thiết</a></li>
+                    <li><a href="#">Chính sách vận chuyển</a></li>
+                    <li><a href="#">Hướng dẫn chọn kích cỡ</a></li>
+                    <li><a href="#">Hướng dẫn thanh toán</a></li>
+                    <li><a href="#">Quy định đổi hàng</a></li>
+                    <li><a href="#">Hướng dẫn mua hàng</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>KẾT NỐI</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="bi bi-facebook"></i></a>
+                    <a href="#"><i class="bi bi-instagram"></i></a>
+                    <a href="#"><i class="bi bi-youtube"></i></a>
+                    <a href="#"><i class="bi bi-tiktok"></i></a>
+                </div>
+                <h4>PHƯƠNG THỨC THANH TOÁN</h4>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" class="pay-icon">
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            © 2025 by GROUP 1
+        </div>
+    </footer>
+    <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body pt-0">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <img id="main_IMG_popup" src="/IMAGE_FOLDER/aodai/aodai1.png" 
+                                    class="img-fluid w-100" 
+                                    alt="Ảnh lớn" 
+                                    id="mainProductImage">
+                            </div>
+                            <div class="col-md-5">
+                                <h3 id="modalProductName"><span id ="name_product_popup">Áo thun cotton</span></h3>
+                                
+                                <p class="h4 text-danger fw-bold" id="modalProductPrice">
+                                    300.0000 <sup>đ</sup> 
+                                    <span class="text-muted text-decoration-line-through fs-6 fw-normal">400.000<sup>đ</sup></span>
+                                </p>
+                                
+                                <input type="hidden" id="modalProductPriceValue" value="249000">
+
+                                <div class="mt-3">
+                                    <p class="mb-1"><strong>Màu sắc:</strong></p>
+                                    <input type="radio" class="btn-check" name="colorOptions" id="colorWhite" value="white" checked data-image-src="damvay6.png">
+                                    <label class="btn btn-outline-dark btn-sm me-1" for="colorWhite">Trắng</label>
+                                    
+                                    <input type="radio" class="btn-check" name="colorOptions" id="colorBlack" value="black"
+                                        data-image-src="damvay7.png">
+                                    <label class="btn btn-outline-dark btn-sm me-1" for="colorBlack">Đen</label>
+                                    
+                                    <input type="radio" class="btn-check" name="colorOptions" id="colorBlue" value="blue"
+                                        data-image-src="damvay8.png">
+                                    <label class="btn btn-outline-dark btn-sm" for="colorBlue">Xanh</label>
+                                </div>
+                                <div class="mt-3">
+                                    <p class="mb-1"><strong>Kích thước:</strong></p>
+                                    <input type="radio" class="btn-check" name="sizeOptions" id="sizeS" value="S" checked>
+                                    <label class="btn btn-outline-dark btn-sm me-1" for="sizeS" style="width: 40px;">S</label>
+                                    
+                                    <input type="radio" class="btn-check" name="sizeOptions" id="sizeM" value="M">
+                                    <label class="btn btn-outline-dark btn-sm me-1" for="sizeM" style="width: 40px;">M</label>
+                                    
+                                    <input type="radio" class="btn-check" name="sizeOptions" id="sizeL" value="L">
+                                    <label class="btn btn-outline-dark btn-sm" for="sizeL" style="width: 40px;">L</label>
+                                </div>
+                                
+                                <div class="mt-3">
+                                    <p class="mb-1"><strong>Số lượng:</strong></p>
+                                    <div class="input-group input-group-quantity" style="width: 140px;">
+                                        <button class="btn btn-outline-secondary" type="button" id="button-minus">-</button>
+                                        <input type="text" class="form-control" value="1" id="quantityInput" aria-label="Số lượng" inputmode="numeric">
+                                        <button class="btn btn-outline-secondary" type="button" id="button-plus">+</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-grid mt-4">
+                                    <button class="btn btn-danger" id="addToCartBtn" onclick="addProduct()">Thêm vào giỏ hàng</button>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+
+        
+    <script src="script.js"></script>
+    <script>
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        
+        const type_product = JSON.parse(localStorage.getItem("typeProductData"));
+        let cnt = 0;
+        document.getElementById("dangxem_title").innerText = type_product.type_;
+        if (type_product.value === "quanau" || type_product.value === "aodai") mr = ".png";
+        else mr = ".jpg";
+        let d = 1;
+        document.querySelectorAll('#name_product').forEach(t => {
+            t.textContent = type_product.type_ +   " "+ d;
+            d+=1;
+        });
+        document.querySelectorAll('#img_clo').forEach(img => {
+            cnt+=1;
+            let t = img.nextElementSibling.nextElementSibling.firstChild;
+            img.src = "IMAGE_FOLDER/"+type_product.value+"/"+type_product.value+cnt+mr;
+            img.addEventListener('click', () => {
+                let val = img.src;
+                const data = {
+                    value: val,
+                    name_product: t.innerText
+                };
+
+                localStorage.setItem("productData", JSON.stringify(data));
+                window.location.href = "trangchitiet.html";
+            });
+        });
+        kiemtra_danhmuc();
+        function open_Popup(e){
+            const box = e.closest(".box_danhmuc");
+            const img = box.querySelector("img");
+            document.getElementById("main_IMG_popup").src = img.src;
+            document.getElementById("name_product_popup").innerText = box.querySelector("#name_product").innerText;
+            const modal = new bootstrap.Modal(document.getElementById('exampleModalToggle'));
+            const minusBtn = document.getElementById('button-minus');
+            const plusBtn = document.getElementById('button-plus');
+            const quantityInput = document.getElementById('quantityInput');
+            if (quantityInput) {
+                quantityInput.value = 1;
+            }
+            
+            if(minusBtn && plusBtn && quantityInput) {
+                minusBtn.replaceWith(minusBtn.cloneNode(true));
+                plusBtn.replaceWith(plusBtn.cloneNode(true));
+
+                const newMinus = document.getElementById('button-minus');
+                const newPlus = document.getElementById('button-plus');
+
+                newMinus.addEventListener('click', function() {
+                    let val = parseInt(quantityInput.value);
+                    if (val > 1) quantityInput.value = val - 1;
+                });
+
+                newPlus.addEventListener('click', function() {
+                    let val = parseInt(quantityInput.value);
+                    quantityInput.value = val + 1;
+                });
+            }
+            modal.show();
+        }
+        function addProduct(e) {
+            const selectedSize = document.querySelector('input[name="sizeOptions"]:checked').value;
+            const product = {
+                name: document.getElementById("name_product_popup").innerText,
+                price: 300000,
+                size: selectedSize,
+                quantity: parseInt(document.getElementById("quantityInput").value),
+                // image: document.getElementById("img_clo").src
+                image: document.getElementById("main_IMG_popup").src
+            };
+            showToast2();
+            const existing = cart.find(item => item.name === product.name && item.size === product.size);
+
+            if (existing) {
+                existing.quantity += product.quantity;
+            } else {
+                cart.push(product);
+                let total = localStorage.getItem("total");
+                let totalmoney = parseInt(total)+300000*product.quantity;
+                localStorage.setItem("total",totalmoney);
+                update_totalmoney();
+                localStorage.setItem("cart", JSON.stringify(cart));
+
+            }
+            const modalElement = document.getElementById('exampleModalToggle');
+            const modal = bootstrap.Modal.getInstance(modalElement); 
+            if (modal) {
+                modal.hide();
+            }
+
+        };
+        console.log(localStorage.getItem("total"));
+        update_totalmoney();
+        document.getElementById("giohang").addEventListener("click", function() {
+            open_cart();
+        });
+        
+        function formatCurrency(number) {
+            return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(number).replace(/\s/g, '');
+        }
+
+        function renderAllCarts() {
+            const cartItemList = document.getElementById('cartItemList');
+            // const miniCartList = document.getElementById('miniCartList');
+            const cartSubtotal = document.getElementById('cartSubtotal');
+            cartItemList.innerHTML = '';
+            let subtotal = 0; 
+                cart.forEach((item, index) => {
+                    const itemTotal = item.price * item.quantity;
+                    subtotal += itemTotal;
+
+                    // vẽ giỏ hàng modal 2
+                    const cartItemRow = document.createElement('div');
+                    cartItemRow.className = 'row align-items-center mb-3 cart-item';
+                    cartItemRow.setAttribute('data-index', index); 
+                    cartItemRow.innerHTML = `
+                        <div class="col-5">
+                            <div class="d-flex align-items-center">
+                                <img src="${item.image}" class="img-fluid" style="width: 80px;" alt="${item.name}">
+                                <div class="ms-3 cart-item-name">${item.name} - ${item.size}</div>
+                            </div>
+                        </div>
+                        <div class="col-2 text-center cart-item-price">${formatCurrency(item.price)}</div>
+                        <div class="col-2 text-center">
+                            <input type="number" class="form-control form-control-sm mx-auto cart-item-quantity" value="${item.quantity}" style="width: 60px;" min="1" data-index="${index}">
+                        </div>
+                        <div class="col-2 text-center cart-item-total">${formatCurrency(itemTotal)}</div>
+                        <div class="col-1 text-center">
+                            <button class="btn btn-sm btn-outline-danger btn-delete-item" data-index="${index}">X</button>
+                        </div>
+                    `;
+                    cartItemList.appendChild(cartItemRow);
+                });
+            
+            
+            // cập nhật tổng tiền
+            const totalText = formatCurrency(subtotal);
+            cartSubtotal.innerText = totalText;
+            localStorage.setItem("total",parseInt(subtotal));
+            update_totalmoney();
+
+        }
+    function handleCartActions(e) {
+        console.log(e);
+        const target = e.target;
+        if (target.classList.contains('btn-delete-item')) {
+            const index = parseInt(target.getAttribute('data-index'));
+            
+            if (confirm("Bạn muốn xóa sản phẩm ra khỏi giỏ hàng?")) {
+                cart.splice(index, 1);
+                localStorage.setItem("cart", JSON.stringify(cart));
+                renderAllCarts();
+            }
+        }
+        if (target.classList.contains('cart-item-quantity')) {
+            const index = parseInt(target.getAttribute('data-index'));
+            const newQuantity = parseInt(target.value);
+            
+            if (newQuantity > 0) {
+                cart[index].quantity = newQuantity;
+                renderAllCarts();
+            }
+        }
+    }
+    document.getElementById('cartItemList').addEventListener('click', handleCartActions);
+
+    function open_cart(){
             renderAllCarts();
 
             const modal = new bootstrap.Modal(document.getElementById('exampleModalToggle2'));
