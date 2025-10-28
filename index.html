@@ -43,7 +43,6 @@
                 <i class="bi bi-cart4" style="font-size: 1rem;"></i>
             </div>            
             <span id="money">1.000.000<sup>đ</sup></span>
-
         </div>
     </div>
     <div id="navbar">
@@ -73,7 +72,7 @@
         </div>
         <div id="ds_product">
             <div class="box">
-                <img id="img_clo" src="IMAGE_FOLDER/aothun/aothun10.jpg" alt="aodai">
+                <img id="img_clo" src="IMAGE_FOLDER/aothun/Aothun10.jpg" alt="aodai">
                 <div id="sale_box">
                     <img class="sale" src="https://png.pngtree.com/png-vector/20230520/ourmid/pngtree-red-flash-sale-discount-logo-with-yellow-lightning-vector-png-image_7102022.png" width="10px">
                 </div>
@@ -87,7 +86,7 @@
                 </div>
             </div>
             <div class="box">
-                <img id="img_clo" src="IMAGE_FOLDER/aodai/aodai12.png" alt="aodai">
+                <img id="img_clo" src="AODAI/aodai12.png" alt="aodai">
                 <div id="sale_box">
                     <img class="sale" src="https://png.pngtree.com/png-vector/20230520/ourmid/pngtree-red-flash-sale-discount-logo-with-yellow-lightning-vector-png-image_7102022.png" width="10px">
 
@@ -189,7 +188,15 @@
     <div id="thongbao_fav" class="toast align-items-center border-0" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
             <div class="toast-body">
-            Sản phẩm đã được thêm vào phần yêu thích!
+                Sản phẩm đã được thêm vào phần yêu thích!
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+    <div id="thongbao_add" class="toast align-items-center border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+                Sản phẩm đã được thêm vào giỏ hàng!
             </div>
             <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
@@ -197,7 +204,7 @@
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-col">
-                <img src="logo1.png" alt="OWEN Logo" class="footer-logo">
+                <img src="logo1.png" alt="CLOUE Logo" class="footer-logo">
                 <h4>CÔNG TY CỔ PHẦN THỜI TRANG CLOUE - VIET NAM</h4>
                 <p>Hotline: 1900 1234<br></p>
 
@@ -262,7 +269,7 @@
                                 <h3 id="modalProductName"><span id ="name_product">Áo thun cotton</span></h3>
                                 
                                 <p class="h4 text-danger fw-bold" id="modalProductPrice">
-                                    300.0000 <sup>đ</sup> 
+                                    300.0000<sup>đ</sup> 
                                     <span class="text-muted text-decoration-line-through fs-6 fw-normal">400.000<sup>đ</sup></span>
                                 </p>
                                 
@@ -303,7 +310,7 @@
                                 </div>
                                 
                                 <div class="d-grid mt-4">
-                                    <button class="btn btn-danger" id="addToCartBtn">Thêm vào giỏ hàng</button>
+                                    <button class="btn btn-danger" id="addToCartBtn" onclick="addProduct()">Thêm vào giỏ hàng</button>
                                 </div>
                                 
                             </div>
@@ -312,24 +319,83 @@
                 </div>
             </div>
         </div>
+
+    <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Giỏ hàng</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="row border-bottom mb-2 pb-2 d-none d-md-flex fw-bold">
+                            <div class="col-5">Sản phẩm</div>
+                            <div class="col-2 text-center">Đơn giá</div>
+                            <div class="col-2 text-center">Số lượng</div>
+                            <div class="col-2 text-center">Thành tiền</div>
+                            <div class="col-1"></div> </div>
+                        
+                        <div id="cartItemList">
+                            </div>
+                    </div>
+
+                    <div class="modal-footer justify-content-between"> <div>
+                            <span>Tạm tính:</span>
+                            <span class="h5 text-danger" id="cartSubtotal">0đ</span>
+                        </div>
+                        <div> <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Quay lại mua hàng</button>
+                            <a href="#" class="btn btn-success" role="button">Thanh toán ngay</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     <script src="script.js"></script>
     <script>
+
+        localStorage.clear();
+        localStorage.setItem("total",0);
         function open_Popup(e){
             const box = e.closest(".box");
+            const tensp = e.closest(".tensp");
             const img = box.querySelector("img");
             document.getElementById("main_IMG_popup").src = img.src;
+            document.querySelector("#name_product").innerText = tensp.querySelector("span").innerText;
             const modal = new bootstrap.Modal(document.getElementById('exampleModalToggle'));
+            const minusBtn = document.getElementById('button-minus');
+            const plusBtn = document.getElementById('button-plus');
+            const quantityInput = document.getElementById('quantityInput');
+            if (quantityInput) {
+                quantityInput.value = 1;
+            }
+            
+            if(minusBtn && plusBtn && quantityInput) {
+                minusBtn.replaceWith(minusBtn.cloneNode(true));
+                plusBtn.replaceWith(plusBtn.cloneNode(true));
+
+                const newMinus = document.getElementById('button-minus');
+                const newPlus = document.getElementById('button-plus');
+
+                newMinus.addEventListener('click', function() {
+                    let val = parseInt(quantityInput.value);
+                    if (val > 1) quantityInput.value = val - 1;
+                });
+
+                newPlus.addEventListener('click', function() {
+                    let val = parseInt(quantityInput.value);
+                    quantityInput.value = val + 1;
+                });
+            }
             modal.show();
         }
         let cnt = 0;
 
         document.querySelectorAll('#img_clo').forEach(img => {
             cnt+=1;
-            // img.src = "/IMAGE_FOLDER/"+type_product.value+"/"+type_product.value+cnt+mr;
             img.addEventListener('click', () => {
                 const box = img.closest('.box');
                 const nameElement = box.querySelector('.tensp span');
-                console.log(nameElement.innerText);
                 let val = img.src;
                 const data = {
                     value: val,
@@ -340,9 +406,97 @@
                 window.location.href = "trangchitiet.html";
             });
         });
+        function addProduct() {
+            showToast2();
+            const selectedSize = document.querySelector('input[name="sizeOptions"]:checked').value;
+            const product = {
+                name: document.getElementById("name_product").innerText,
+                price: 300000,
+                size: selectedSize,
+                quantity: parseInt(document.getElementById("quantityInput").value),
+                image: document.getElementById("img_clo").src
+            };
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            const existing = cart.find(item => item.name === product.name && item.size === product.size);
+
+            if (existing) {
+                existing.quantity += product.quantity;
+            } else {
+                cart.push(product);
+                let total = localStorage.getItem("total");
+                let totalmoney = parseInt(total)+300000*product.quantity;
+                localStorage.setItem("total",totalmoney);
+            }
+            localStorage.setItem("cart", JSON.stringify(cart));
+
+            const modalElement = document.getElementById('exampleModalToggle');
+            const modal = bootstrap.Modal.getInstance(modalElement); 
+            if (modal) {
+                modal.hide();
+            }
+        };
         kiemtra_danhmuc();
+        update_totalmoney();
+        document.getElementById("giohang").addEventListener("click", function() {
+            open_cart();
+        });
+        function open_cart(){
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        function formatCurrency(number) {
+            return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(number).replace(/\s/g, '');
+        }
+
+    // vẽ lại giỏ hàng
+        function renderAllCarts() {
+            const cartItemList = document.getElementById('cartItemList');
+            // const miniCartList = document.getElementById('miniCartList');
+            const cartSubtotal = document.getElementById('cartSubtotal');
+            cartItemList.innerHTML = '';
+            let subtotal = 0; 
+                cart.forEach((item, index) => {
+                    const itemTotal = item.price * item.quantity;
+                    subtotal += itemTotal;
+
+                    // vẽ giỏ hàng modal 2
+                    const cartItemRow = document.createElement('div');
+                    cartItemRow.className = 'row align-items-center mb-3 cart-item';
+                    cartItemRow.setAttribute('data-index', index); 
+                    cartItemRow.innerHTML = `
+                        <div class="col-5">
+                            <div class="d-flex align-items-center">
+                                <img src="${item.image}" class="img-fluid" style="width: 80px;" alt="${item.name}">
+                                <div class="ms-3 cart-item-name">${item.name} - ${item.size}</div>
+                            </div>
+                        </div>
+                        <div class="col-2 text-center cart-item-price">${formatCurrency(item.price)}</div>
+                        <div class="col-2 text-center">
+                            <input type="number" class="form-control form-control-sm mx-auto cart-item-quantity" value="${item.quantity}" style="width: 60px;" min="1" data-index="${index}">
+                        </div>
+                        <div class="col-2 text-center cart-item-total">${formatCurrency(itemTotal)}</div>
+                        <div class="col-1 text-center">
+                            <button class="btn btn-sm btn-outline-danger btn-delete-item" data-index="${index}">X</button>
+                        </div>
+                    `;
+                    cartItemList.appendChild(cartItemRow);
+                });
+            
+            
+            // cập nhật tổng tiền
+            const totalText = formatCurrency(subtotal);
+            cartSubtotal.innerText = totalText;
+            localStorage.setItem("total",parseInt(subtotal));
+        }
+
+            console.log(cart);
+            renderAllCarts();
+
+            const modal = new bootstrap.Modal(document.getElementById('exampleModalToggle2'));
+            setTimeout(() => {
+                modal.show();
+            }, 200);
+            update_totalmoney();
+    }
     </script>
 </body>
-
 </html>
-
